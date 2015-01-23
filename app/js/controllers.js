@@ -87,11 +87,13 @@ myAppControllers.controller('homeCtrl', ['$scope', '$http', '$timeout',
         };
 
         $scope.removeSelected = function(){
-
             var originTodo = $scope.todoList;
             $scope.todoList = [];
             angular.forEach(originTodo, function(el) {
-                if (!el.todoCheck) $scope.todoList.push(el);
+                if (!el.todoCheck) {
+                    $scope.todoList.push(el);
+
+                }
             });
             $scope.selectedAllState = false;
         }
