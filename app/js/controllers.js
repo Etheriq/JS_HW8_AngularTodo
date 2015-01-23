@@ -104,6 +104,3 @@ myAppControllers.controller('aboutCtrl', ['$scope',
 
         }
     ]);
-
-
-
