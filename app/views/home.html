@@ -1,1 +1,29 @@
 <h3>Home page</h3>
+<div class="row">
+    <div class="col-md-offset-3 col-md-5">
+        <input type="text" name="todo" ng-model="todo" ng-keyup="addTodo($event)" placeholder="Todo wish" class="form-control"> <br/>
+        <ul class="todo-list">
+            <li ng-repeat="todo in todoList track by $index" ng-class="{done: todo.todoCheck}">
+                <input type="checkbox" ng-model="todo.todoCheck">
+                <span>
+                    {{ todo.text }}
+                </span>
+            </li>
+        </ul>
+        <hr>
+        <p class="text-center">
+            <span>
+                <input type="checkbox" ng-click="selectAll()" id="select_all" ng-model="selectedAllState">
+                <label for="select_all">Select all.</label>
+            </span>
+
+            <span>
+                &nbsp;&nbsp;&nbsp;Selected {{ selected() }} from {{ todoList.length }}
+            </span>
+            &nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-xs btn-info" value="Save" ng-click="save()">
+            &nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-xs btn-warning" value="Load" ng-click="load()">
+            &nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-xs btn-danger" value="Remove selected" ng-click="removeSelected()">
+            <p class="text-center" ng-bind-html="info"></p>
+        </p>
+    </div>
+</div>

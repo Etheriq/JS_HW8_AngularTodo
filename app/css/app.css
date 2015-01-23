@@ -1,2 +1,24 @@
 /* app css stylesheet */
 
+.todo-list li {
+    list-style: none;
+}
+.todo-list li input[type=checkbox] {
+    margin-right: 10px;
+}
+.todo-list {
+    margin: 0;
+    padding: 0;
+}
+.done {
+    text-decoration: line-through;
+    color: #cb4e2d;
+}
+.error-message {
+    font-weight: bolder;
+    color: #ED5E5E;
+}
+.success-message {
+    font-weight: bolder;
+    color: #437bb6;
+}

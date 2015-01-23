@@ -2,16 +2,16 @@
 
 /* App Module */
 
-var myApp = angular.module('myApp', ['ui.router', 'myAppControllers']);
+var myApp = angular.module('myApp', ['ui.router', 'myAppControllers', 'ngSanitize']);
 
-myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
     $urlRouterProvider.otherwise("/");
     $stateProvider
         .state('home', {
             url: "/",
             templateUrl: "views/home.html",
-            controller: 'aboutCtrl'
+            controller: 'homeCtrl'
         })
         .state('about', {
             url: "/about",
@@ -19,5 +19,11 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: "aboutCtrl"
         });
 
-    $locationProvider.html5Mode(true)
+    $locationProvider.html5Mode(true);
+
+    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+    $httpProvider.defaults.transformRequest = function( data ) {
+        return angular.isObject( data ) && String( data ) !== '[object File]' ? angular.toParam( data ) : data;
+    };
+
 });
