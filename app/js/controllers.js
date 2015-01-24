@@ -56,15 +56,11 @@ myAppControllers.controller('homeCtrl', ['$scope', '$http', '$timeout',
             console.dir(data);
             $http.post('http://127.0.0.1:1337/todoList', data)
                 .success(function(data, status){
-                    console.log(data);
-                    console.log(status);
                     $scope.todoList = [];
                     $scope.info = '<span class="success-message">List saved successfully</span>';
                     clearInfo();
                 })
                 .error(function(data, status){
-                    console.log(data);
-                    console.log(status);
                     $scope.info = '<span class="error-message">Not saved</span>';
                     clearInfo();
                 });
@@ -73,15 +69,11 @@ myAppControllers.controller('homeCtrl', ['$scope', '$http', '$timeout',
         $scope.load = function() {
             $http.get('http://127.0.0.1:1337/todoList')
                 .success(function(data, status){
-                    console.log(data);
-                    console.log(status);
                     $scope.todoList = data;
                     $scope.info = '<span class="success-message">List load successfully</span>';
                     clearInfo();
                 })
                 .error(function(data, status){
-                    console.log(data);
-                    console.log(status);
                     $scope.info = '<span class="error-message">Not load</span>';
                     clearInfo();
                 });
@@ -119,6 +111,7 @@ myAppControllers.controller('homeCtrl', ['$scope', '$http', '$timeout',
 
 myAppControllers.controller('aboutCtrl', ['$scope',
         function($scope){
+            $scope.infoT = 'Coming soon';
 
         }
     ]);
