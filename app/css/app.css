@@ -10,7 +10,7 @@
     margin: 0;
     padding: 0;
 }
-.done {
+.done span.show-text{
     text-decoration: line-through;
     color: #cb4e2d;
 }
@@ -21,4 +21,27 @@
 .success-message {
     font-weight: bolder;
     color: #437bb6;
+}
+.animate-switch.ng-animate {
+    -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+
+.animate-switch.ng-leave.ng-leave-active,
+.animate-switch.ng-enter {
+    opacity:0;
+}
+.animate-switch.ng-leave,
+.animate-switch.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+.animate-switch {
+    position: absolute;
+}
+.li {
+    height: 22px;
+    margin: 5px 0;
+}
+.edit-input {
+    color: rgba(34, 5, 0, 0.79);
 }

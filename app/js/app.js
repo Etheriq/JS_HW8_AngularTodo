@@ -2,7 +2,7 @@
 
 /* App Module */
 
-var myApp = angular.module('myApp', ['ui.router', 'myAppControllers', 'ngSanitize']);
+var myApp = angular.module('myApp', ['ui.router', 'myAppControllers', 'ngSanitize', 'ngAnimate']);
 
 myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 

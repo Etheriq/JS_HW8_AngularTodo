@@ -14,14 +14,16 @@ myAppControllers.controller('homeCtrl', ['$scope', '$http', '$timeout',
         }
 
         $scope.todoList = [
-            {"text":"first Job", "todoCheck": false},
-            {"text":"second Job", "todoCheck": true}
+            //{"text":"first Job", "todoCheck": false, "operation": "show"},
+            //{"text":"second Job", "todoCheck": true, "operation": "show"}
         ];
 
         $scope.addTodo = function(event) {
             if (event.keyCode === 13 && event.target.value != '') {
-                $scope.todoList.push({"text":$scope.todo, "todoCheck": false});
+                $scope.todoList.push({"text":$scope.todo, "todoCheck": false, "operation": "show"});
                 $scope.todo = '';
+                $scope.info = '<span class="success-message">Todo ' + event.target.value + ' was created successfully</span>';
+                clearInfo();
             }
         };
 
@@ -83,7 +85,6 @@ myAppControllers.controller('homeCtrl', ['$scope', '$http', '$timeout',
                     $scope.info = '<span class="error-message">Not load</span>';
                     clearInfo();
                 });
-
         };
 
         $scope.removeSelected = function(){
@@ -96,7 +97,22 @@ myAppControllers.controller('homeCtrl', ['$scope', '$http', '$timeout',
                 }
             });
             $scope.selectedAllState = false;
-        }
+            $scope.info = '<span class="error-message">Selected items was removed successfully</span>';
+            clearInfo();
+        };
+
+        $scope.editTodo = function (todo) {
+            todo.operation = 'edit';
+        };
+
+        $scope.finishEditTodo = function(event, todo) {
+            if (event.keyCode === 13 && event.target.value != '') {
+                todo.text = event.target.value;
+                todo.operation = 'show';
+                $scope.info = '<span class="success-message">Todo item was updated successfully</span>';
+                clearInfo();
+            }
+        };
 
     }  //  end homeCtrl
 ]);
