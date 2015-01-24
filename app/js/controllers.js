@@ -6,6 +6,7 @@ var myAppControllers = angular.module('myAppControllers', []);
 
 myAppControllers.controller('homeCtrl', ['$scope', '$http', '$timeout',
     function($scope, $http, $timeout){
+        var serverUrl = 'http://127.0.0.1:1337/todoList';
 
         function clearInfo () {
             $timeout(function(){
@@ -54,7 +55,7 @@ myAppControllers.controller('homeCtrl', ['$scope', '$http', '$timeout',
         $scope.save = function() {
             var data = JSON.stringify($scope.todoList);
             console.dir(data);
-            $http.post('http://127.0.0.1:1337/todoList', data)
+            $http.post(serverUrl, data)
                 .success(function(data, status){
                     $scope.todoList = [];
                     $scope.info = '<span class="success-message">List saved successfully</span>';
@@ -67,7 +68,7 @@ myAppControllers.controller('homeCtrl', ['$scope', '$http', '$timeout',
         };
 
         $scope.load = function() {
-            $http.get('http://127.0.0.1:1337/todoList')
+            $http.get(serverUrl)
                 .success(function(data, status){
                     $scope.todoList = data;
                     $scope.info = '<span class="success-message">List load successfully</span>';
